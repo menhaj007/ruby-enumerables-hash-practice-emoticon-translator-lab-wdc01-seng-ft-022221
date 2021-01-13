@@ -11,3 +11,21 @@ def load_library(file)
         end
         return newHashFile
   end
+  
+  def get_english_meaning(file, str)
+    readFile = load_library(file)
+    result = ""
+    readFile.each do |key, value|
+      value.each do |subKey, subValue|
+        if (subValue == str)
+          result = key
+        end
+      end
+    end
+    # puts result.length
+    if result.length < 1
+      return "Sorry, that emoticon was not found"
+    else
+      return result
+    end
+  end
